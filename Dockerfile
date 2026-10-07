@@ -6,7 +6,7 @@ ARG UID=1000
 ARG GID=1000
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends libsqlite3-mod-spatialite binutils libproj-dev gdal-bin \
+  && apt-get install -y --no-install-recommends curl libsqlite3-mod-spatialite binutils libproj-dev gdal-bin \
   && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man \
   && apt-get clean \
   && groupadd -g "${GID}" python \
@@ -30,6 +30,6 @@ USER="python"
 COPY --chown=python:python . .
 RUN mkdir -p /app/db
 
-EXPOSE 8000
+EXPOSE 8001
 
 ENTRYPOINT ["python"]

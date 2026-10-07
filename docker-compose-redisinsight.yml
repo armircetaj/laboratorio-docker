@@ -1,0 +1,13 @@
+services:  
+  redisinsight:
+    image: 'redis/redisinsight:${REDISINSIGHT_TAG:-3.8}'
+    ports:
+        - '127.0.0.1:5540:5540'
+    container_name: redisinsight
+    networks:
+      - net
+    restart: unless-stopped
+
+networks:
+  net:
+    name: net
